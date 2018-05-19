@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Header  = () => {
@@ -14,23 +14,16 @@ const Header  = () => {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="http://bootstrapk.com/examples/carousel/#">Project name</a>
+              {/* <a class="navbar-brand" href="http://bootstrapk.com/examples/carousel/#">Project name</a> */}
+              <a class="navbar-brand"><NavLink exact to="/home" activeClassName="active">Amazon Pick</NavLink></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 {/* <li class="active"><a href="http://bootstrapk.com/examples/carousel/#">Home</a></li> */}
-                <li><NavLink exact to="/home" className="item" activeClassName="active">홈</NavLink></li>
+                <li><NavLink exact to="/home" className="item" activeClassName="active">Home</NavLink></li>
                 <li><NavLink to="/about/velopert" className="item" activeClassName="active">소개</NavLink></li> 
-                <li><NavLink to="/posts" className="item" activeClassName="active">포스트</NavLink></li>
-                {/* <li><NavLink to="/me" className="item" activeClassName="active">마이페이지</NavLink></li>
-                <li><NavLink to="/login" className="item" activeClassName="active">로그인</NavLink></li>
-                <li><NavLink to="/search" className="item" activeClassName="active">검색</NavLink></li> 
-                <li><MenuItem>Upload</MenuItem></li>
-                <li><MenuItem>Contact</MenuItem></li> */}
-              </ul>
-              <ul class="nav navbar-nav member">
-                <li><NavLink exact to="/" className="item" activeClassName="active" style={{paddingLeft: 700}}>Login</NavLink></li>
-                <li><NavLink to="/join" className="item" activeClassName="active">Join</NavLink></li> 
+                <li><NavLink to="/posts" className="item" activeClassName="active">Upload</NavLink></li>
+                <li><NavLink exact to="/" className="item" activeClassName="active">Login</NavLink></li>
               </ul>
             </div>
           </div>

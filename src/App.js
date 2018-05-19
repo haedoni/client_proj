@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import Header from './routes/Header';
 import Home from './routes/Home';
 import LoginGoogle from './routes/LoginGoogle';
 import Posts from './routes/Posts';
-import Join from './routes/Join';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -18,7 +16,6 @@ const App = () => {
                       {/* <Route path="/about/:username" component={About}/> */}
                       <Route path="/posts" component={Posts}/>
                       <Route path="/" component={LoginGoogle}/>
-                      <Route path="/Join" component={Join}/>
                       {/* <Route path="/login" component={Login}/>
                       <Route path="/me" component={MyPage}/>
                       <Route path="/search" component={Search}/>

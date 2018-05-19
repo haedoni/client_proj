@@ -1,10 +1,14 @@
 import React from 'react';
-
+import {Redirect} from 'react-router-dom';
 
 export default class Home extends React.Component {
     constructor(props){
         super(props);
-        this.state = {items: [], like:0};
+        this.state = {
+            items: [], 
+            name:'',
+            redirect: false,
+        };
 
         fetch('http://localhost:8080/product') 
         .then(response => response.json())
@@ -13,69 +17,54 @@ export default class Home extends React.Component {
                 });
     }
 
-    onClickButton(event){
+    componentDidMount() {
+        let Data = null;
+        Data = JSON.parse(sessionStorage.getItem('userData'));
+        console.log(Data);
+        if(Data !== null){
+            this.setState({name: Data.userData.name})
+        } else{
+            this.setState({name: "guest"})
+        }
+   }   
+
+    nameLiked(itemName){
         fetch('http://localhost:8080/product/addLike', {
                 method: 'POST',
-                // headers: {
-                //     'Accept': 'application/json',
-                //     'Content-Type': 'application/json'
-                // },
-                body:JSON.stringify(
-                    this.state.like
-                 )
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body:"user=" + this.state.name + "&param2=" + itemName
             }).then((res) => res.json()) 
             .then((data) =>  console.log(data))
     }
+
+    // onClickButton(event){
+    //     fetch('http://localhost:8080/product/addLike', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/x-www-form-urlencoded'
+    //             },
+    //             body:"user=" + value1&param2=value2"
+    //         }).then((res) => res.json()) 
+    //         .then((data) =>  console.log(data))
+    // }
 
     render() {
                 return (
                 <div>
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-                            <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-                        </ol>
                         <div class="carousel-inner" role="listbox">
-                            <div class="item">
-                            {/* <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide"> */}
-                            <div class="container">
-                                <div class="carousel-caption">
-                                <h1>Example headline.</h1>
-                                <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                                <p><a class="btn btn-lg btn-primary" href="http://bootstrapk.com/examples/carousel/#" role="button">Sign up today</a></p>
-                                </div>
-                            </div>
-                            </div>
                             <div class="item active">
-                            {/* <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide"> */}
                             <div class="container">
                                 <div class="carousel-caption">
-                                <h1>Another example headline.</h1>
+                                <h1>Hello, {this.state.name}</h1>
                                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                <p><a class="btn btn-lg btn-primary" href="http://bootstrapk.com/examples/carousel/#" role="button">Learn more</a></p>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="item">
-                            {/* <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide"> */}
-                            <div class="container">
-                                <div class="carousel-caption">
-                                <h1>One more for good measure.</h1>
-                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                <p><a class="btn btn-lg btn-primary" href="http://bootstrapk.com/examples/carousel/#" role="button">Browse gallery</a></p>
+                                <p><a class="btn btn-lg btn-primary" role="button">Learn more</a></p>
                                 </div>
                             </div>
                             </div>
                         </div>
-                        <a class="left carousel-control" href="http://bootstrapk.com/examples/carousel/#myCarousel" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="http://bootstrapk.com/examples/carousel/#myCarousel" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
 
                 <div class="container marketing"> 
@@ -86,7 +75,7 @@ export default class Home extends React.Component {
                                     <div dangerouslySetInnerHTML={{__html: item.imageLink}}></div>
                                     <h2>{item.name}</h2>
                                     <p>{item.price}</p>
-                                    <p><a class="btn btn-default" role="button" value={item.name} onClick={() => this.nameLiked(this.state.like)}>Like</a></p>
+                                    <p><a class="btn btn-default" role="button" value={item.name} onClick={() => this.nameLiked(item.name)}>Like</a></p>
                                     </div>
                                 );
                                 } )}
