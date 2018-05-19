@@ -14,14 +14,14 @@ export default class Home extends React.Component {
     }
 
     onClickButton(event){
-        fetch('http://localhost:8080/product', {
+        fetch('http://localhost:8080/product/addLike', {
                 method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
+                // headers: {
+                //     'Accept': 'application/json',
+                //     'Content-Type': 'application/json'
+                // },
                 body:JSON.stringify(
-                    this.state
+                    this.state.like
                  )
             }).then((res) => res.json()) 
             .then((data) =>  console.log(data))
