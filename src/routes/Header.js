@@ -19,7 +19,7 @@ const Header  = () => {
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 {/* <li class="active"><a href="http://bootstrapk.com/examples/carousel/#">Home</a></li> */}
-                <li><NavLink exact to="/" className="item" activeClassName="active">홈</NavLink></li>
+                <li><NavLink exact to="/home" className="item" activeClassName="active">홈</NavLink></li>
                 <li><NavLink to="/about/velopert" className="item" activeClassName="active">소개</NavLink></li> 
                 <li><NavLink to="/posts" className="item" activeClassName="active">포스트</NavLink></li>
                 {/* <li><NavLink to="/me" className="item" activeClassName="active">마이페이지</NavLink></li>
@@ -29,7 +29,7 @@ const Header  = () => {
                 <li><MenuItem>Contact</MenuItem></li> */}
               </ul>
               <ul class="nav navbar-nav member">
-                <li><NavLink exact to="/login" className="item" activeClassName="active" style={{paddingLeft: 700}}>Login</NavLink></li>
+                <li><NavLink exact to="/" className="item" activeClassName="active" style={{paddingLeft: 700}}>Login</NavLink></li>
                 <li><NavLink to="/join" className="item" activeClassName="active">Join</NavLink></li> 
               </ul>
             </div>

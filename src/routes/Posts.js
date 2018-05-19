@@ -53,7 +53,7 @@ export default class Posts extends React.Component {
 
     render() {
         return (
-                <div>
+                <div style={{paddingLeft: 200, paddingTop:100}}>
                  <form>
                     <div class="form-group">
                     <label for="exampleInputEmail1">Product Name</label>
