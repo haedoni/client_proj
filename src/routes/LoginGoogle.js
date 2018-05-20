@@ -56,7 +56,7 @@ return (
 <h2 id="welcomeText"></h2>
 
 <GoogleLogin
-clientId="151869497147-fuhmp8ab1u78kvfffejnkh0cu092pir2.apps.googleusercontent.com"
+clientId="151869497147-u699gnu2s2eus8tsrtt1qkrrml1mernn.apps.googleusercontent.com"
 buttonText="Login with Google"
 onSuccess={responseGoogle}
 onFailure={responseGoogle}/>

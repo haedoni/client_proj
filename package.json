@@ -2,7 +2,7 @@
   "name": "client_proj",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://haedoni.github.io/client_proj",
+  "homepage": "https://haedoni.github.io/client_proj/",
   "dependencies": {
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
