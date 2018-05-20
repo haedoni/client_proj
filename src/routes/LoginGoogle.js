@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import GoogleLogin from 'react-google-login';
 import {PostData} from './PostData';
 import {Redirect} from 'react-router-dom';
-// import './Welcome.css';
 
 class LoginGoogle extends Component {
 constructor(props) {
@@ -40,7 +39,7 @@ PostData('signup', postData).then((result) => {
 render() {
 
 if (this.state.redirect || sessionStorage.getItem('userData')) {
-    return (<Redirect to={'/home'}/>)
+    return (<Redirect to={"/home"}/>)
 }
 
 const responseGoogle = (response) => {

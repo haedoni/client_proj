@@ -21,7 +21,7 @@ const Header  = () => {
               <ul class="nav navbar-nav">
                 {/* <li class="active"><a href="http://bootstrapk.com/examples/carousel/#">Home</a></li> */}
                 <li><NavLink exact to="/home" className="item" activeClassName="active">Home</NavLink></li>
-                <li><NavLink to="/about/velopert" className="item" activeClassName="active">소개</NavLink></li> 
+                <li><NavLink to="/mypage" className="item" activeClassName="active">MyPage</NavLink></li> 
                 <li><NavLink to="/posts" className="item" activeClassName="active">Upload</NavLink></li>
                 <li><NavLink exact to="/" className="item" activeClassName="active">Login</NavLink></li>
               </ul>
