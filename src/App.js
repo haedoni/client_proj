@@ -17,7 +17,7 @@ const App = () => {
                       {/* <Route path="/about/:username" component={About}/> */}
                       <Route path="/mypage" component={MyPage}/>
                       <Route path="/posts" component={Posts}/>
-                      <Route path="/" component={LoginGoogle}/>
+                      <Route exact path="/" component={LoginGoogle}/>
                       {/* <Route path="/login" component={Login}/>
                       <Route path="/me" component={MyPage}/>
                       <Route path="/search" component={Search}/>

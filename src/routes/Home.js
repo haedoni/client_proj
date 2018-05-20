@@ -11,7 +11,7 @@ export default class Home extends React.Component {
             redirect: false,
         };
 
-        fetch('http://localhost:8080/product') 
+        fetch('http://192.168.35.187:8080/product') 
         .then(response => response.json())
         .then(response => {  
           this.setState({items:  response });
@@ -32,7 +32,7 @@ export default class Home extends React.Component {
 
     handleClick (name){
         alert(this.state.name);
-        fetch('http://localhost:8080/product/addLike', {
+        fetch('http://192.168.35.187:8080/product/addLike', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -43,7 +43,7 @@ export default class Home extends React.Component {
     }
 
     // onClickButton(event){
-    //     fetch('http://localhost:8080/product/addLike', {
+    //     fetch('http://192.168.35.187:8080/product/addLike', {
     //             method: 'POST',
     //             headers: {
     //                 'Content-Type': 'application/x-www-form-urlencoded'

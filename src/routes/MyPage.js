@@ -17,7 +17,7 @@ export default class MyPage extends React.Component {
             this.setState({name: Data.name})
             this.setState({email: Data.email})
 
-            fetch('http://localhost:8080/likedProduct', {
+            fetch('http://192.168.35.187:8080/likedProduct', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
