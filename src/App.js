@@ -4,6 +4,7 @@ import Home from './routes/Home';
 import LoginGoogle from './routes/LoginGoogle';
 import Posts from './routes/Posts';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import MyPage from './routes/MyPage';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
                   <Switch>
                       <Route exact path="/home" component={Home}/>
                       {/* <Route path="/about/:username" component={About}/> */}
+                      <Route path="/mypage" component={MyPage}/>
                       <Route path="/posts" component={Posts}/>
                       <Route path="/" component={LoginGoogle}/>
                       {/* <Route path="/login" component={Login}/>

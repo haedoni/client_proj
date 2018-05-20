@@ -42,6 +42,17 @@ export default class Home extends React.Component {
             .then((data) =>  console.log(data))
     }
 
+    // onClickButton(event){
+    //     fetch('http://localhost:8080/product/addLike', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/x-www-form-urlencoded'
+    //             },
+    //             body:"user=" + value1&param2=value2"
+    //         }).then((res) => res.json()) 
+    //         .then((data) =>  console.log(data))
+    // }
+
     render() {
                 return (
                 <div>

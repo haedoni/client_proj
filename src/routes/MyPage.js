@@ -4,17 +4,36 @@ export default class MyPage extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            items: []
+            items: [],
+            name:'',
+            email:'',
         };
 
-        fetch('http://localhost:8080/likedProduct') 
-        .then(response => response.json())
-        .then(response => {  
-          this.setState({items:  response });
+        let Data = null;
+        Data = JSON.parse(sessionStorage.getItem('userData'));
+        console.log(Data);
+        if(Data !== null){
+            alert(Data.email);
+            this.setState({name: Data.name})
+            this.setState({email: Data.email})
+
+            fetch('http://localhost:8080/likedProduct', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body:"user=" + Data.email
+            }) 
+            .then(response => response.json())
+            .then(response => {  
+                this.setState({items: response });
                 });
+        } else{ 
+            this.setState({name: "guest"})
+            this.setState({email: "guest"})
+        }
+
     }
-
-
 
     render() {
         return (
@@ -24,7 +43,7 @@ export default class MyPage extends React.Component {
                         <div class="item active">
                         <div class="container">
                             <div class="carousel-caption">
-                            <h1>Hello, {this.state.name}</h1>
+                            <h1>{this.state.name}</h1>
                             {/* <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                             <p><a class="btn btn-lg btn-primary" role="button">Learn more</a></p> */}
                             
@@ -42,10 +61,9 @@ export default class MyPage extends React.Component {
                                 <div dangerouslySetInnerHTML={{__html: item.imageLink}}></div>
                                 <h2>{item.name}</h2>
                                 <p>{item.price}</p>
-                                <p><a class="btn btn-default" role="button" value={item.name} onClick={() => this.handleClick(item.name)}>Like</a></p>
                                 </div>
                             );
-                            },this )}
+                            },this)}
                 </div>
             </div>
         </div>
