@@ -1,5 +1,5 @@
 export function PostData(type, userData) {
-    let BaseURL = 'http://192.168.35.187:8443/';
+    let BaseURL = 'http://192.168.35.187:8080/';
     
     return new Promise((resolve, reject) =>{
     fetch(BaseURL+type, {

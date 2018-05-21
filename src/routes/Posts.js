@@ -16,7 +16,7 @@ export default class Posts extends React.Component {
     }
 
     onClickButton(event){
-        fetch('http://192.168.35.187:8443/product', {
+        fetch('http://192.168.35.187:8080/product', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
